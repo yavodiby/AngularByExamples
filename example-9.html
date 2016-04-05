@@ -1,0 +1,31 @@
+<html ng-app>
+    <head>
+        <meta charset="utf-8">
+        <title>Initializing the model using an Angular controller, defined with a global function.</title>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js"></script>
+        <script>
+            function NameCtrl($scope) {
+                $scope.firstname = 'Rick';
+                $scope.lastname = 'Yavo';
+            };
+        
+        </script>
+
+    </head>
+    <body ng-controller ="NameCtrl">
+        
+        <h2>Example 9</h2>
+        <h5>Initializing the model using an Angular controller, defined with a global function.</h5>
+        
+        <label>Firstname:</label>
+        <input type="text" ng-model="firstname" placeholder="Enter first name">
+        <label>Lastname:</label>
+        <input type="text" ng-model="lastname" placeholder="Enter last name"><br> <br>
+        Your full name is : {{firstname}} {{lastname}}
+        
+    
+    
+    </body>
+
+
+</html>

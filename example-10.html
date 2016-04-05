@@ -1,0 +1,33 @@
+<html ng-app ="nameApp">
+    <head>
+        <meta charset="utf-8">
+        <title>Initializing the model using an Angular controller, defined within an Angular module.</title>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js"></script>
+        
+        <script>
+            var nameApp = angular.module('nameApp',[]);
+            nameApp.controller('NameCtrl', function($scope) {
+                $scope.firstname = 'Rick';
+                $scope.lastname = 'Yavo';
+            });
+            
+        </script>
+    </head>
+    
+    <body ng-controller = NameCtrl>
+        <h2>Example 10</h2>
+        <h5>Initializing the model using an Angular controller, defined within an Angular module.</h5>
+        
+        <label>Firstname:</label>
+        <input type="text" ng-model="firstname" placeholder="Enter first name">
+        <label>Lastname:</label>
+        <input type="text" ng-model="lastname" placeholder="Enter last name">
+        <br> <br>
+        Your full name is : {{firstname}} {{lastname}}
+    
+    
+    </body>
+
+
+
+</html>

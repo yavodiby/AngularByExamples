@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Added keyup event listener on text input</title>
+    </head>
+    
+    <body>
+        <h2>Example 2</h2>
+        <h5>Added keyup event listener on text input.</h5>
+        <label>Name</label>
+        <input id="textInput" type="text" />
+        Hello World
+        
+    <script>
+        var textInputElement = document.getElementById('textInput');
+        textInputElement.addEventListener('keyup', function() {
+            console.log('Got keyup event.');
+        })
+        
+    </script>
+    
+    </body>
+
+</html>
