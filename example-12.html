@@ -1,0 +1,39 @@
+<html ng-app ="courseApp">
+    <head>
+        <meta charset="utf-8">
+        <title>Adding entries to a list using forms and ng-submit.</title>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js"></script>
+        
+        <script> 
+            var courseApp = angular.module('courseApp', []);
+            courseApp.controller('CourseCtrl', function($scope) {
+                $scope.courses = ['HTML' ,'CSS', 'Javascript'];
+                
+                $scope.addCourse = function() {
+                    $scope.courses.push($scope.enteredCourse);
+                };
+                
+            });
+        
+        </script>
+    </head>
+    <body ng-controller ="CourseCtrl">
+        <h2>Example 12</h2>
+        <h5>Adding entries to a list using forms and ng-submit.</h5>
+        
+        <ul>
+            <li ng-repeat ="course in courses">{{course}}</li>
+        
+        </ul>
+        <form ng-submit ="addCourse()">
+            <input type="text" ng-model ="enteredCourse">
+            <input type="submit" value="add">
+        
+        
+        </form>
+        
+    
+    
+    </body>
+
+</html>

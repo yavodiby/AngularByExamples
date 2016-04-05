@@ -1,0 +1,30 @@
+<html ng-app ="courseApp">
+    <head>
+        <meta charset="utf-8">
+        <title>Looping over lists in templates using ng-repeat.</title>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js"></script>
+        <script>
+              var courseApp = angular.module('courseApp', []);
+                courseApp.controller('CourseCtrl', function($scope) {
+                    $scope.courses = ['HTML', 'CSS', 'Javascript'];
+                });
+        </script>
+    
+    </head>
+    <body ng-controller ="CourseCtrl">
+        <h2>Example 11</h2>
+        <h5>Looping over lists in templates using ng-repeat</h5>
+        
+        <ul>
+            <li ng-repeat ="course in courses" >{{course}}</li>
+        
+        </ul>
+    
+    
+    
+    </body>
+        
+    
+    
+
+</html>
