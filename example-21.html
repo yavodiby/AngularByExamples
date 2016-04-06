@@ -1,0 +1,39 @@
+<html ng-app="countryApp">
+    <head>
+        <meta charset="utf-8">
+        <title>Sorting in descending order using ng-repeat</title>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js"></script>
+        
+        <script>
+            var countryApp = angular.module('countryApp', []);
+            countryApp.controller('CountryCtrl',['$scope','$http', function(scope, http){
+                http.get('countries.json').success(function(data){
+                    scope.countries = data;
+                });
+            }]);
+        
+        </script>
+    
+    </head>
+    <body ng-controller="CountryCtrl">
+        <h2>Example 21</h2>
+        <h5>Sorting in descending order usding ng-repeat</h5>
+        <table>
+            <label>Search:</label>
+            <input type="text" ng-nodel="query">
+            <tr>
+                <th>Country</th>
+                <th>Population</th>
+            </tr>
+            <tr ng-repeat="country in countries | filter:query | orderBy: '-population'">
+                <td>{{country.name}}</td>
+                <td>{{country.population}}</td>
+            
+            </tr>
+        
+        </table>
+    
+    </body>
+
+
+</html>

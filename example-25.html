@@ -1,0 +1,41 @@
+<html ng-app="countryApp">
+    <head>
+        <meta charset="utf-8">
+        <title>Using ng-src</title>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js"></script>
+        
+        <script>
+            var countryApp = angular.module('countryApp', []);
+            countryApp.controller('CountryCtrl', function($scope, $http) {
+                $http.get('countriesFlag.json').success(function(data) {
+                    $scope.countries = data;
+                });
+            });
+        
+        </script>
+        
+    
+    </head>
+    <body ng-controller="CountryCtrl">
+        <h2>Example 25</h2>
+        <h5>Using ng-src</h5>
+        <table>
+            <tr>
+                <th>Country:</th>
+                <th>Population:</th>
+                <th>Flag:</th>
+            
+            </tr>
+            <tr ng-repeat="country in countries">
+                <td>{{country.name}}</td>
+                <td>{{country.population}}</td>
+                <td><img ng-src="{{country.flagURL}}" width="100"></td>
+            
+            </tr>
+            
+        </table>
+    
+    </body>
+
+
+</html>
