@@ -1,0 +1,59 @@
+<!-- 
+    An additional script tag has been added for angular-route, which defines the ngRoute module.
+    The ngRoute module was added as a dependency to countryApp, which provides the $routeProvider API.
+    The config() call sets up the routes using inline strings as templates.
+    A placeholder CountryDetailCtrl was added.
+    A div with the ng-view directive was added to the body. This is where the route provider injects content rendered from the template associated with the current route.
+-->
+
+<html ng-app="countryApp">
+    <head>
+        <meta charset="utf-8">
+        <title>Getting started with routing using ngRoute</title>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.10/angular.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.10/angular-route.min.js"></script>
+        <script>
+            
+            var countryApp = angular.module('countryApp', ['ngRoute']);
+            countryApp.config(function($routeProvider) {
+                $routeProvider.
+                    when('/', {
+                    //using templateUrl
+                    templateUrl: 'countryList.html',
+                    controller: 'CountryCtrl'
+                }).
+                    when('/:countryName', {
+                    // using template
+                    template: '<h1>Create country detail view</h1> {{name}}',
+                    controller: 'CountryDetailCtrl'
+                }).
+                    otherwise ({
+                        redirectTo: '/'
+                });
+                
+                              
+             });
+                
+           countryApp.controller('CountryCtrl', function($scope, $http) {
+               $http.get('countryWithGdp.json').success(function(data) {
+                   $scope.countries = data;
+               });             
+           });
+            
+            countryApp.controller('CountryDetailCtrl', function($scope, $routeParams) {
+                // extrating and using parameter for routes
+                console.log($routeParams.countryName);
+                $scope.name =$routeParams.countryName;
+            });
+        
+        
+        </script>
+    
+    </head>
+    <body>
+        <div ng-view></div>
+    
+    
+    </body>
+
+</html>
